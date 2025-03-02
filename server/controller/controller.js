@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const Auth = require("../model/model")
+const Auth = require('../model/model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
