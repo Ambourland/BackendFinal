@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, useNavigate as nav } from 'react-router-dom'
+import {Routes, Route, useNavigate } from 'react-router-dom'
 
 import './App.css'
 import axios from 'axios'
 import TodoList from './TodoList'
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     password: ''
   })
 
-  // const nav = useNavigate()
+   const navigate = useNavigate()
 
   const handleLogin = (e) => {
     console.log("login", e.target.value)
@@ -40,7 +41,7 @@ function App() {
       .then(res => {
         console.log("res", res.data)
         if (res.data.msg === "good login") {
-          nav("/admin")
+          navigate("/TodoList")
         } else {
           alert("BAD LOGIN")
         }
@@ -66,7 +67,6 @@ function App() {
   }
 
   return (
-    <Router>
       <Routes>
         <Route path="/" element={
           <>
@@ -87,9 +87,9 @@ function App() {
           </div>
         </>
         }/>
-        <Route path="/TodoList" element={<TodoList />}/>
+        <Route path="/TodoList" element={<ProtectedRoute />} />
+        <Route path="t" element={<TodoList />}/>
       </Routes>
-    </Router>
   )
 }
 // add route to ToDo page

@@ -74,8 +74,11 @@ function TodoList() {
       .catch(err => console.log(err))
   }
 
-  const handleEdit = () => {
-    setRender(!render)
+  const handleEdit = (id) => {
+    setRender((prevRender) => ({
+      ...prevRender,
+      [id]: !prevRender[id]
+    }))
   }
 
   const handleEditSubmit = (e) => {
@@ -109,15 +112,14 @@ function TodoList() {
           <div key={item._id} style={{ marginBottom: "20px" }}>
 
             <div style={{ border: '2px solid red' }}>
-              {render
+              {render[item._id]
                 ?
                 (
                   <div>
                     <input
                       defaultValue={item.todo || ""}
                       onChange={(e) => handleEditChange(e)}
-                    >
-                    </input>
+                    />
 
                     <button
                       id={item._id}

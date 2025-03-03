@@ -15,7 +15,7 @@ app.use(cors(
 ))
 app.use(express.json())
 Router(app)
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     mongoose.connect(process.env.MONGO_URI).then(() => {
         console.log("connected to Database")

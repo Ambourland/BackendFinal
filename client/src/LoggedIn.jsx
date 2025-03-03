@@ -1,16 +1,8 @@
-import React ,{useState} from 'react'
-import TodoList from './TodoList'
+import React from 'react';
+import TodoList from './TodoList';
 
 const LoggedIn = () => {
+  return <TodoList />;
+};
 
-
-const [todo, setTodo] = useState({})
-
-
-  return (
-    <TodoList />
-
-  )
-}
-
-export default LoggedIn
+export default LoggedIn;
